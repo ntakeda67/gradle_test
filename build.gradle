@@ -1,0 +1,55 @@
+// javaビルド用のプラグインをロード
+apply plugin: 'java'
+// eclipse-wtpとの連携タスク用のプラグインをロード
+// eclipseプラグインはeclipse-wtpに内包されている
+apply plugin: 'eclipse-wtp'
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '1.8'
+}
+
+// Java バージョンとの互換性チェック
+sourceCompatibility = 1.7
+version = '1.0'
+
+
+// maven公開リポジトリを取り扱えるようにする
+repositories {
+    mavenCentral()
+}
+
+// Java pluginの依存性定義
+dependencies {
+    compile (
+    	    ['commons-io:commons-io:2.1'],
+    	    ['commons-lang:commons-lang:2.6'],
+    )
+    testCompile 'junit:junit:4.+'
+}
+
+
+// ソースファイルの読み込みディレクトリの定義
+sourceSets {
+   main {
+      java {
+           srcDir 'src'
+      }
+      resources {
+           srcDir 'resources'
+      }      
+   }
+   test {
+      java {
+           srcDir 'test'
+      }
+      resources {
+           srcDir 'testResources'
+      }
+   }
+}
+
+task hello {
+     doLast {
+     	    println 'Hello world!'
+     }
+}
