@@ -12,9 +12,4 @@ public class FileNumberReaderTest {
 		NumberFileReader reader = new NumberFileReader("UNKNOWN_FILE");
 		reader.getNumberList();
 	}
-	@Test
-	public void 失敗するテストメソッド(){
-		fail("failed!!");
-	}
-
 }
