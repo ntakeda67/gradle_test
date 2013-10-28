@@ -48,6 +48,15 @@ sourceSets {
    }
 }
 
+// bulid時のJavaファイルエンコーディング指定
+def defaultEncoding = 'UTF-8'
+compileJava {
+    options.encoding = defaultEncoding
+}
+compileTestJava {
+    options.encoding = defaultEncoding
+}
+
 task hello {
      doLast {
      	    println 'Hello world!'
